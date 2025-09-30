@@ -88,3 +88,8 @@ and also you should make a symbolic link that connects nuscenes.
 mkdir data
 ln -s path/to/nuscenes ./data/nuscenes
 ```
+
+
+---
+
+but it doesn't work at `bash scripts/train.sh` because torch version is not fit to this model... 
