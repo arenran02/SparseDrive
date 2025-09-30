@@ -1,4 +1,7 @@
-# installation
+
+# How to execute SparseDrive with CUDA 12.1
+
+## installation
 
 ```bash
 conda create -n sparsedrive2 python=3.8 -y
@@ -16,6 +19,8 @@ pip3 install -r requirement.txt
 cd projects/mmdet3d_plugin/ops
 python3 setup.py develop
 cd ../../../
+
+
 ```
 
 ## download nuscenes dataset
@@ -38,3 +43,8 @@ nuscenes
 └── v1.0-trainval
 ```
 
+and also you should make a symbolic link that connects nuscenes.
+```
+mkdir data
+ln -s path/to/nuscenes ./data/nuscenes
+```
