@@ -1,5 +1,5 @@
 numpy==1.23.5
-mmcv_full==1.7.1
+mmcv_full==1.7.2
 mmdet==2.28.2
 urllib3==1.26.16
 pyquaternion==0.9.9
