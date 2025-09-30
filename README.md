@@ -1,5 +1,7 @@
-
 # How to execute SparseDrive with CUDA 12.1
+
+you should have environment with CUDA 12.1.
+I execute this repository in 2 A6000, CUDA 12.1, Ubuntu 22.04 also, in docker container.
 
 ## installation
 
@@ -20,6 +22,44 @@ cd projects/mmdet3d_plugin/ops
 python3 setup.py develop
 cd ../../../
 
+sh scripts/create_data.sh
+sh scripts/kmeans.sh
+
+
+mkdir ckpt
+wget https://download.pytorch.org/models/resnet50-19c8e357.pth -O ckpt/resnet50-19c8e357.pth
+```
+
+## train & test
+before train, you should modify the code of `train.py`, to be fit your number of gpus.
+
+```
+## stage1
+bash ./tools/dist_train.sh \
+   projects/configs/sparsedrive_small_stage1.py \
+   2 \   # GPU num modified according to your device
+   --deterministic
+
+## stage2
+bash ./tools/dist_train.sh \
+   projects/configs/sparsedrive_small_stage2.py \
+   2 \   # GPU num modified according to your device
+   --deterministic
+```
+
+## train
+```
+sh scripts/train.sh
+```
+
+## test
+```
+sh scripts/test.sh
+```
+
+## Visualization
+```
+sh scripts/visualize.sh
 
 ```
 
